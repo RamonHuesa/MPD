@@ -1,0 +1,34 @@
+clear all
+delete(instrfind({'Port'},{'COM4'}));
+
+tic
+rate = 9600;
+SampleLength=100;
+s = serial('COM4', 'BaudRate',rate,'TimeOut',10,'Terminator','LF');
+s.InputBufferSize = 1000000;    
+   
+fopen(s);
+
+data=zeros(7,SampleLength);
+i=1;
+while i<=SampleLength
+    sample=fscanf(s,'%i');
+    if length(sample)==6;
+        data(:,i)=vertcat(sample,toc);
+        i=i+1;
+    end
+end
+% data=fscanf(s,'%d');
+% Close the serial port
+fclose(s);
+
+Ax=data(1,:);
+Ay=data(2,:);
+Az=data(3,:);
+Gx=data(4,:);
+Gy=data(5,:);
+Gz=data(6,:);
+Time=data(7,:);
+% plot(Ax,'DisplayName','Ax');hold on;plot(Ay,'DisplayName','Ay');plot(Az,'DisplayName','Az');plot(Gx,'DisplayName','Gx');plot(Gy,'DisplayName','Gy');plot(Gz,'DisplayName','Gz');hold off;
+plot(Time,Ax,Time,Ay,Time,Az,Time,Gx,Time,Gy,Time,Gz);
+legend('Ax','Ay','Az','Gx','Gy','Gz');
