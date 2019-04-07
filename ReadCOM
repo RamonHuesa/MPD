@@ -18,8 +18,7 @@ while i<=SampleLength         % When the SampleLength limit is reached the proce
         i=i+1;
     end
 end
-% data=fscanf(s,'%d');
-% Close the serial port
+
 fclose(s);        % Close serial port bus
 
 % Matrix divided into 7 arrays that are plotted to be visually analysed
