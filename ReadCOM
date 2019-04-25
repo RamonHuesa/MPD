@@ -1,9 +1,12 @@
 clear all         % Clean the Workspace and Commands Window
 delete(instrfind({'Port'},{'COM4'}));        % Delete some posible previous configuration for the port used for the Xbee (COM4).
 
+delay=30;         % Delay in the Arduino code
+TestDuration=10         % Duration of the test in seconds
+SampleLength=TestDuration*1000/Delay;       % Samples=Duration[s]*(1000ms/1s)*(1sample/delay[ms])
+
 tic         % Initiacilates tic funtion (used to track the time which every sample is taken at).
 rate = 9600;         % 9600 bits per seconds which compared with the 50 seconds delay in the Arduino code is negligible
-SampleLength=100;       % SampleLength makes the test duration easy to be calculated: duration=100samples*30ms/1sample=3000ms=3s.
 s = serial('COM4', 'BaudRate',rate,'TimeOut',10,'Terminator','LF');        % Object created to represent the COM port, some inputs are set here
 s.InputBufferSize = 1000000;    
    
