@@ -1,7 +1,7 @@
 clear all         % Clean the Workspace and Commands Window
 delete(instrfind({'Port'},{'COM4'}));        % Delete some posible previous configuration for the port used for the Xbee (COM4).
 
-delay=30;         % Delay in the Arduino code
+delay=10;         % Delay in the Arduino code
 TestDuration=10         % Duration of the test in seconds
 SampleLength=TestDuration*1000/Delay;       % Samples=Duration[s]*(1000ms/1s)*(1sample/delay[ms])
 
