@@ -31,5 +31,5 @@ void loop(){
   xbee.print(" "); xbee.print(GyY);
   xbee.print(" "); xbee.println(GyZ); xbee.print("\n");
 
-  delay(50);      //Delay to help the communication to be read correctly
+  delay(10);      //Delay to help the communication to be read correctly
 }
